@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="filter"></div>
+{% for favorite in favorites %} 
+<div class="card">
+    <div class="son1">
+        <img src="{{ favorite.image.url }}" alt="">
+    </div>
+    <div class="son2">
+        <h4>{{ favorite.title }}</h4>
+        <p class="red views"><i class="fas fa-eye"></i><span class="white">{{ favorite.total_views }}</span></p>
+        <p class="red">Категория: <span class="white">{{ favorite.category.title }}</span></p>
+        <p class="red">Жанр:
+            <span class="white">{{ favorite.genre.title }}</span>
+        </p>
+        <p class="red">Релиз: <span class="white">{{ favorite.year.years}}г</span></p>
+        <a href="{% url 'anime' favorite.slug %}">Смотреть</a>
+    </div>
+</div>
+    {% empty %}
+    No items found
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+<header>
+  <div class="top">
+      <h2>
+        Zoreyan Inc.
+      </h2>
+      <h4>
+        Anime
+      </h4>
+
+      <form action="{% url 'anime-list' %}" class="search">
+          <input type="text" placeholder="Поиск" name="q"><button type="submit"><i class="fas fa-arrow-right"></i></button>
+      </form>
+
+
+  </div>
+      {% if user.is_authenticated %}
+          <h2 class="username">Hi {{ request.user }}</h2>
+      {% endif %}
+</header>

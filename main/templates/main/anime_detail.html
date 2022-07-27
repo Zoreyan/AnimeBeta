@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+{% block content %}
+{% with request.resolver_match.url_name as url_name %}
+<div class="container" {% if url_name == 'anime' %} style="border-bottom: 1px solid #fff; display: block;" {% endif %}>
+
+    <div class="filter"></div>
+    <script>var player = new Playerjs({id:"player", file:"{{ anime.video.url }}"});</script>
+
+
+    <div id="player"></div>
+    <h3 class="title">{{ anime.title }}</h3>
+<div class="content-data-block">
+        <img src="{{ anime.image.url }}" alt="" class="detail-img">
+        <div class="content-detail">
+            <h4>Realise:  <span>{{ anime.year }}</span></h4>
+            <h4>Category: <span>{{ anime.category }}</span></h4>
+            <h4>Genre:    <span>{{ anime.genre.title }}</span></h4>
+        </div>
+</div>
+
+</div>
+{% endwith %}
+{% endblock %}

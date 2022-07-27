@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/adaptation.css' %}">
+    <script src="{% static 'main/js/playerjs.js' %}" type="text/javascript"></script>
+    <script src="{% static 'main/js/loader.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="mask" id="preloader">
+  <div class="block">W</div>
+  <div class="block">A</div>
+  <div class="block">I</div>
+  <div class="block">T</div>
+    </div>
+        {% include 'include/main/top-nav-bar.html' %}
+        <div class="content">
+          {% include 'include/main/left-nav-bar.html' %}
+          {% block content %}
+          {% endblock %}
+        </div>
+</body>
+</html>

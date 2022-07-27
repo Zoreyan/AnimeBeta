@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="filter">
+        <form action="">
+            {{ myFilter.form }}
+        <button type="submit">Поиск</button>
+        </form>
+    </div>
+    {% for anime in animess %}
+    <div class="card">
+        <div class="son1">
+            <img src="{{ anime.image.url }}" alt="">
+        </div>
+        <div class="son2">
+            <h4>{{ anime.title }}</h4>
+            <p class="red views"><i class="fas fa-eye"></i><span class="white">{{ anime.total_views }}</span></p>
+            <p class="red">Категория: <span class="white">{{ anime.category.title }}</span></p>
+            <p class="red">Жанр:
+                <span class="white">{{ anime.genre.title }}</span>
+            </p>
+            <p class="red">Релиз: <span class="white">{{ anime.year.years}}г</span></p>
+            <a href="{% url 'anime' anime.slug %}">Смотреть</a>
+        </div>
+    </div>
+    {% empty %}
+    No items found
+    {% endfor %}
+</div>
+<div class="pagination">
+    <span class="step-links">
+        {% if animess.has_previous %}
+            <a href="?page=1">&laquo; Первая</a>
+            <a href="?page={{ animess.previous_page_number }}">Предыдущая</a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{ animess.number }} из {{ animess.paginator.num_pages }}.
+        </span>
+
+        {% if animess.has_next %}
+            <a href="?page={{ animess.next_page_number }}">Следующая</a>
+            <a href="?page={{ animess.paginator.num_pages }}">Последняя &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

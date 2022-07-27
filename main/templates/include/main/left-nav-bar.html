@@ -1,0 +1,20 @@
+{% with request.resolver_match.url_name as url_name %}
+
+        <div class="side-bar">
+            <div class="nav">
+                <span>Навигация</span>
+            </div>
+        <ul>
+    {% if user.is_authenticated %}
+            <li><a href="{% url 'anime-list' %}" {% if url_name == 'anime-list' %} class="active" {% endif %}><i class="fas fa-home"></i><span>Главная</span></a></li>
+            <li><a href="{% url 'profile' %}" {% if url_name == 'profile' %} class="active" {% endif %}><i class="fas fa-user"></i><span>Профиль</span></a></li>
+            <li><a href="{% url 'favorite' %}" {% if url_name == 'favorite' %} class="active" {% endif %}><i class="fas fa-heart"></i><span>Нравится</span></a></li>
+            <li><a href=""><i class="fas fa-question-circle"></i><span>Помощь</span></a></li>
+            <li><a href="{% url 'logout' %}" class="log-out"><i class="fas fa-sign-out-alt"></i><span>Выход</span></a></li>
+    {% else %}
+            <li><a href=""><i class="fas fa-question-circle"></i><span>Помощь</span></a></li>
+            <li><a href="{% url 'register' %}" class="log-out"><i class="fas fa-sign-in-alt"></i><span>Регистрация</span></a></li>
+    {% endif %}
+        </ul>
+{% endwith %}
+        </div>
